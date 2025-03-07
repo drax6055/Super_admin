@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/utils/colors.dart';
+import 'package:flutter_template/wiget/custome_text.dart';
 import '../utils/custom_text_styles.dart';
 
 class ElevatedButtonExample extends StatelessWidget {
@@ -37,10 +38,10 @@ class ElevatedButtonExample extends StatelessWidget {
                 onPressed: onPressed,
                 onLongPress: onLongPress,
                 icon: icon!,
-                label: Text(
-                  text,
-                  style: CustomTextStyles.textFontSemiBold(
-                      size: 15.sp, color: white),
+                label: CustomTextWidget(
+                  text: text,
+                  textAlign: TextAlign.center,
+                  textStyle: CustomTextStyles.textFontSemiBold(size: 15.sp, color: white),
                 ),
                 style: style ?? _defaultStyle(),
               )
@@ -48,9 +49,11 @@ class ElevatedButtonExample extends StatelessWidget {
                 onPressed: onPressed,
                 onLongPress: onLongPress,
                 style: style ?? _defaultStyle(),
-                child: Text(text,
-                    style: CustomTextStyles.textFontSemiBold(
-                        size: 15.sp, color: white)),
+                child: CustomTextWidget(
+                  text: text,
+                  textAlign: TextAlign.center,
+                  textStyle: CustomTextStyles.textFontSemiBold(size: 15.sp, color: white),
+                ),
               ),
       ),
     );

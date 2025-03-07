@@ -94,8 +94,8 @@ Widget login_screen_header() {
         decoration: BoxDecoration(
           color: primaryColor,
           borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(20),
-            bottomRight: Radius.circular(20),
+            bottomLeft: Radius.circular(20.r),
+            bottomRight: Radius.circular(20.r),
           ),
         ),
       ),
