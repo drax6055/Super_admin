@@ -13,19 +13,24 @@ class DashboardScreen extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: 'Dashboard'),
+        appBar: CustomAppBar(
+          title: 'Dashboard',
+           
+        ),
         body: Column(
-           children: [
-            CustomTextWidget(
-              text: 'Welcome to Dashboard',
-              textAlign: TextAlign.start,
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await getController.onLogoutPress();
-              },
-              child: Text('Logout')),
-           ],
+          children: [],
+        ),
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              ListTile(
+                title: Text('Logout'),
+                onTap: () async {
+                  await getController.onLogoutPress();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

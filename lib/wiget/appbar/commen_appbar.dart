@@ -7,12 +7,12 @@ import '../custome_text.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final Color backgroundColor;
-   final List<Widget>? actions;
+  final List<Widget>? actions;
 
   CustomAppBar({
     required this.title,
     this.backgroundColor = primaryColor,
-     this.actions, 
+    this.actions,
   });
 
   @override
@@ -20,22 +20,22 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: CustomTextWidget(
         text: title,
-        textAlign: TextAlign.start, 
-        textStyle: CustomTextStyles.textFontSemiBold(
-          size: 20.sp,  
-          color: Colors.white, 
+        textAlign: TextAlign.start,
+        textStyle: CustomTextStyles.textFontMedium(
+          size: 18.sp,
+          color: Colors.white,
         ),
       ),
       backgroundColor: backgroundColor,
       toolbarHeight: 70.h,
+      iconTheme: IconThemeData(color: white),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(20.0.r),
         ),
       ),
-       actions: actions,
+      actions: actions,
     );
-   
   }
 
   @override
