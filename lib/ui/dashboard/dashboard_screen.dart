@@ -18,6 +18,14 @@ class DashboardScreen extends StatelessWidget {
       child: Scaffold(
         appBar: CustomAppBar(
           title: 'Dashboard',
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.notifications,
+                  size: 24.sp,
+                ))
+          ],
         ),
         body: Column(
           children: [],
