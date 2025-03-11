@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/ui/dashboard/dashboard_controller.dart';
 import 'package:flutter_template/utils/colors.dart';
+import 'package:flutter_template/wiget/custome_text.dart';
 import 'package:get/get.dart';
+import '../../utils/custom_text_styles.dart';
 import '../../wiget/appbar/commen_appbar.dart';
-import '../../wiget/custome_text.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -31,33 +32,42 @@ class DashboardScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: primaryColor,
                 ),
-                accountName: Text('John Doe'),
-                accountEmail: Text('john.doe@example.com'),
+                accountName: CustomTextWidget(
+                    text: 'Dharmik Thakker',
+                    textStyle: CustomTextStyles.textFontMedium(
+                        size: 14.sp, color: white)),
+                accountEmail: CustomTextWidget(
+                    text: 'dharmik@example.com',
+                    textStyle: CustomTextStyles.textFontMedium(
+                        size: 12.sp, color: white)),
                 currentAccountPicture: CircleAvatar(
-                  backgroundColor: Colors.orange,
-                  child: Text(
-                    'JD',
-                    style: TextStyle(color: Colors.white),
+                  backgroundColor: secondaryColor,
+                  child: CustomTextWidget(
+                    text: 'DT',
+                    textStyle: CustomTextStyles.textFontMedium(
+                        size: 20.sp, color: white),
                   ),
                 ),
               ),
               ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Salons'),
-                onTap: () async {
-                  await getController.onLogoutPress();
-                },
+                leading: Icon(Icons.dashboard),
+                title: CustomTextWidget(
+                    text: 'Dashboard',
+                    textStyle: CustomTextStyles.textFontMedium(size: 15.sp)),
+                onTap: () async {},
               ),
               ListTile(
-                leading: Icon(Icons.local_offer),
-                title: Text('Packages'),
-                onTap: () async {
-                  await getController.onLogoutPress();
-                },
+                leading: Icon(Icons.calendar_month),
+                title: CustomTextWidget(
+                    text: 'Calender Booking',
+                    textStyle: CustomTextStyles.textFontMedium(size: 15.sp)),
+                onTap: () async {},
               ),
               ListTile(
                 leading: Icon(Icons.exit_to_app),
-                title: Text('Logout'),
+                title: CustomTextWidget(
+                    text: 'Logout',
+                    textStyle: CustomTextStyles.textFontMedium(size: 15.sp)),
                 onTap: () async {
                   await getController.onLogoutPress();
                   Navigator.pop(context);
