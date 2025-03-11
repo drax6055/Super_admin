@@ -1,5 +1,7 @@
-import 'package:flutter_template/ui/auth/login_screen.dart';
-import 'package:flutter_template/ui/dashboard/dashboard_screen.dart';
+import 'package:flutter_template/ui/auth/login/login_screen.dart';
+import 'package:flutter_template/ui/auth/packages/packages_screen.dart';
+import 'package:flutter_template/ui/auth/register/register_screen.dart';
+import 'package:flutter_template/ui/drawer/drawer_screen.dart';
 import 'package:get/get.dart';
 import '../ui/splash/splash_screen.dart';
 import 'app_route.dart';
@@ -16,8 +18,16 @@ class AppPages {
         page: () => LoginScreen(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: Routes.dashboardScreen,
-        page: () => DashboardScreen(),
+        name: Routes.drawerScreen,
+        page: () => DrawerScreen(),
+        transition: Transition.rightToLeft),
+        GetPage(
+        name: Routes.registerScreen,
+        page: () => RegisterScreen(),
+        transition: Transition.rightToLeft),
+        GetPage(
+        name: Routes.packagesScreen,
+        page: () => PackagesScreen(),
         transition: Transition.rightToLeft),
   ];
 }

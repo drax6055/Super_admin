@@ -16,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
   final TextStyle labelStyle = CustomTextStyles.textFontMedium(size: 14.sp);
+  final int? maxLines;  // Added maxLines parameter
 
   CustomTextFormField({
     Key? key,
@@ -27,6 +28,7 @@ class CustomTextFormField extends StatelessWidget {
     this.obscureText = false,
     this.keyboardType = TextInputType.text,
     this.validator,
+    this.maxLines = 1,  // Default to 1 line
   }) : super(key: key);
 
   @override
@@ -37,6 +39,7 @@ class CustomTextFormField extends StatelessWidget {
       keyboardType: keyboardType,
       validator: validator,
       cursorColor: primaryColor,
+      maxLines: maxLines,  // Pass maxLines to the TextFormField
       decoration: InputDecoration(
         hintText: hintText,
         labelText: labelText,

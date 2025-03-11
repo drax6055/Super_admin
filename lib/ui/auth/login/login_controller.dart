@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_template/utils/colors.dart';
 import 'package:get/get.dart';
-import '../../commen_items/sharePrafrence.dart';
-import '../../network/dio.dart';
-import '../../network/model/login_model.dart';
-import '../../network/network_const.dart';
-import '../../route/app_route.dart';
+import '../../../commen_items/sharePrafrence.dart';
+import '../../../main.dart';
+import '../../../network/model/login_model.dart';
+import '../../../network/network_const.dart';
+import '../../../route/app_route.dart';
 
 class LoginController extends GetxController {
   final SharedPreferenceManager _prefs = SharedPreferenceManager();
@@ -19,7 +19,6 @@ class LoginController extends GetxController {
   }
 
   Future onLoginPress() async {
-    final dioClient = DioClient();
 
     Map<String, dynamic> loginData = {
       'email': emailController.text, 
@@ -35,7 +34,7 @@ class LoginController extends GetxController {
 
       await _prefs.setUser(loginResponse);
       await _prefs.saveAccessToken(loginResponse.token!);
-      Get.offNamed(Routes.dashboardScreen);
+      Get.offNamed(Routes.drawerScreen);
     } catch (e) {
       Get.snackbar(
         'Error',

@@ -29,4 +29,39 @@ class Validation {
     
     return null;
   }
+
+  // Validate phone number (e.g., US phone number format)
+  static String? validatePhone(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter your phone number';
+    }
+    
+    // Regular expression for validating phone numbers (US format, e.g., (123) 456-7890)
+    String phonePattern = r'^\(\d{3}\)\s\d{3}-\d{4}$';
+    RegExp regex = RegExp(phonePattern);
+    
+    if (!regex.hasMatch(value)) {
+      return 'Please enter a valid phone number in the format (XXX) XXX-XXXX';
+    }
+    
+    return null;
+  }
+
+   static String? validatename(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter Name';
+    }
+
+    
+    return null;
+  }
+    static String? validateAddress(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter Address';
+    }
+
+    
+    return null;
+  }
+
 }

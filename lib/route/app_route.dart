@@ -1,6 +1,9 @@
 abstract class Routes {
-  static const loginScreen = '/LoginScreen';
   static const splashScreen = '/SplashScreen';
-  static const dashboardScreen = '/DashboardScreen';
+  static const drawerScreen = '/DrawerScreen';
+  static const loginScreen = '/LoginScreen';
+  static const registerScreen = '/RegisterScreen';
+    static const packagesScreen = '/PackagesScreen';
+
 
 }

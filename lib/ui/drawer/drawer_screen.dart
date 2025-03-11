@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_template/ui/dashboard/dashboard_controller.dart';
+import 'package:flutter_template/ui/drawer/calender_booking/calender_screen.dart';
+import 'package:flutter_template/ui/drawer/drawer_controller.dart';
 import 'package:flutter_template/utils/colors.dart';
 import 'package:flutter_template/wiget/custome_text.dart';
 import 'package:get/get.dart';
 import '../../utils/custom_text_styles.dart';
 import '../../wiget/appbar/commen_appbar.dart';
+import 'dashboard/dashboard_screen.dart';
 
-class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({super.key});
+class DrawerScreen extends StatelessWidget {
+  const DrawerScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final DashboardController getController = Get.put(DashboardController());
+
+    final DrawermenuController getController = Get.put(DrawermenuController());
 
     return SafeArea(
       child: Scaffold(
@@ -27,9 +30,16 @@ class DashboardScreen extends StatelessWidget {
                 ))
           ],
         ),
-        body: Column(
-          children: [],
-        ),
+        body: Obx(() {
+           switch (getController.selectedPage.value) {
+          case 0:
+            return DashboardScreen();
+          case 1:
+            return CalenderScreen();
+          default:
+            return DashboardScreen();
+        }
+        }),
         drawer: Drawer(
           child: ListView(
             children: [
@@ -62,14 +72,20 @@ class DashboardScreen extends StatelessWidget {
                 title: CustomTextWidget(
                     text: 'Dashboard',
                     textStyle: CustomTextStyles.textFontMedium(size: 15.sp)),
-                onTap: () async {},
+                onTap: () {
+                    getController.selectPage(0);
+              Navigator.pop(context);
+                },
               ),
               ListTile(
                 leading: Icon(Icons.calendar_month),
                 title: CustomTextWidget(
                     text: 'Calender Booking',
                     textStyle: CustomTextStyles.textFontMedium(size: 15.sp)),
-                onTap: () async {},
+                onTap: () {
+                    getController.selectPage(1);
+              Navigator.pop(context);
+                },
               ),
               ListTile(
                 leading: Icon(Icons.exit_to_app),

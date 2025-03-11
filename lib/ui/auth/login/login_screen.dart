@@ -3,11 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_template/utils/app_images.dart';
 import 'package:flutter_template/utils/colors.dart';
 import 'package:get/get.dart';
-import '../../utils/custom_text_styles.dart';
-import '../../utils/validation.dart';
-import '../../wiget/Custome_textfield.dart';
-import '../../wiget/Custome_button.dart';
-import '../../wiget/custome_text.dart';
+import '../../../route/app_route.dart';
+import '../../../utils/custom_text_styles.dart';
+import '../../../utils/validation.dart';
+import '../../../wiget/Custome_textfield.dart';
+import '../../../wiget/Custome_button.dart';
+import '../../../wiget/custome_text.dart';
 import 'login_controller.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -143,9 +144,13 @@ Widget login_screen_header() {
           InputTxtfield_Email(),
           SizedBox(height: 16.h),
           InputTxtfield_Pass(),
-          SizedBox(height: 50.h),
+          SizedBox(height: 16.h),
+          Align(alignment: Alignment.topRight,child: CustomTextWidget(text: "Forgot your password?",textStyle: CustomTextStyles.textFontBold(size: 14.sp,color: primaryColor))),
+          SizedBox(height: 30.h),
           Btn_Login(),
-
+          SizedBox(height: 16.h),
+          InkWell(onTap: () =>  Get.offNamed(Routes.registerScreen),
+            child: Align(alignment: Alignment.center,child: CustomTextWidget(text: "Create new account",textStyle: CustomTextStyles.textFontBold(size: 14.sp,color: primaryColor)))),
         ],
       ),
     );

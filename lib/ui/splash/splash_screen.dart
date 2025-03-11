@@ -12,6 +12,7 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final SplashController getController = Get.put(SplashController());
+    
     getController.navigateToNextScreen();
 
     return SafeArea(
