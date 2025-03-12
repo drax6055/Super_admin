@@ -24,7 +24,6 @@ class DioClient {
     }
   }
 
-
   Future<T> postData<T>(
       String endpoint, Map<String, dynamic> data, T Function(Map<String, dynamic>) fromJson) async {
     final response = await dio.post(endpoint, data: data);
@@ -39,6 +38,7 @@ class DioClient {
       throw errorMessage;
     }
   }
+
 
 }
 

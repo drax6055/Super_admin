@@ -1,11 +1,12 @@
 import 'package:get/get.dart';
+import 'package:flutter_template/network/dio.dart';
 import '../../../main.dart';
 import '../../../network/model/packages.dart';
 import '../../../network/network_const.dart';
 
 class PackagesController extends GetxController {
   var packages = <Package>[].obs;
-  // final DioClient dioClient = DioClient();
+  final DioClient dioClient = DioClient();
 
   @override
   void onInit() {
