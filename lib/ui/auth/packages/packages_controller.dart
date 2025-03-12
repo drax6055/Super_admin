@@ -6,13 +6,17 @@ import '../../../network/network_const.dart';
 class PackagesController extends GetxController {
   var packages = <Package>[].obs;
   var selectedPackageId = RxnInt();
+  var selectedIndex = 1.obs;
 
   @override
   void onInit() {
     fetchPackages();
     super.onInit();
   }
-
+ void toggleGender(int index) {
+    selectedIndex.value = index;
+  }
+  
   void fetchPackages() async {
     try {
       final response = await dioClient.dio.get('${Apis.PackagesbaseUrl}${Endpoints.packages}');

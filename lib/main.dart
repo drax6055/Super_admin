@@ -13,19 +13,19 @@ FlutterSecureStorage? storage;
 final dioClient = DioClient();
 
 void main() {
-   WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     systemNavigationBarColor: primaryColor,
     statusBarColor: primaryColor,
   ));
   SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,   
-    DeviceOrientation.portraitDown, 
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
   ]).then((_) {
     runApp(MyApp());
   });
-
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -49,4 +49,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-  
