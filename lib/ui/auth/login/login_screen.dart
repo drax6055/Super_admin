@@ -149,7 +149,7 @@ Widget login_screen_header() {
           SizedBox(height: 30.h),
           Btn_Login(),
           SizedBox(height: 16.h),
-          InkWell(onTap: () =>  Get.offNamed(Routes.registerScreen),
+          InkWell(onTap: () =>  Get.toNamed(Routes.registerScreen),
             child: Align(alignment: Alignment.center,child: CustomTextWidget(text: "Create new account",textStyle: CustomTextStyles.textFontBold(size: 14.sp,color: primaryColor)))),
         ],
       ),

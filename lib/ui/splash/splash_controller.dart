@@ -4,7 +4,6 @@ import '../../commen_items/sharePrafrence.dart';
 import '../../route/app_route.dart';
 
 class SplashController extends GetxController {
-
   final SharedPreferenceManager _prefs = SharedPreferenceManager();
 
   @override
@@ -20,13 +19,13 @@ class SplashController extends GetxController {
       Timer(duration, () async {
         String? accessToken = await _prefs.getAccessToken();
         if (accessToken == null) {
-          Get.offNamedUntil(Routes.loginScreen, (route) => false);
+          Get.offNamed(Routes.loginScreen);
         } else {
-           Get.offNamedUntil(Routes.drawerScreen, (route) => false);
+          Get.offNamed(Routes.drawerScreen);
         }
       });
     } catch (e) {
-        Get.snackbar('Error', '$e');
+      Get.snackbar('Error', '$e');
     }
   }
 }

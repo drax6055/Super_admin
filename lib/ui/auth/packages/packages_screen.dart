@@ -6,6 +6,7 @@ import 'package:flutter_template/utils/colors.dart';
 import 'package:flutter_template/ui/auth/packages/packages_controller.dart';
 
 import '../../../network/model/packages.dart';
+import '../../../wiget/appbar/commen_appbar.dart';
 
 class PackagesScreen extends StatelessWidget {
   PackagesScreen({super.key});
@@ -15,15 +16,14 @@ class PackagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar(title: "Select Prefreble Package"),
       body: Column(
         children: [
-          Packages_header(),
-          SizedBox(height: 50.h),
+          SizedBox(height: 10.h),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 10.h),
                   Obx(() {
                     if (getController.packages.isEmpty) {
                       return Center(child: CircularProgressIndicator());
@@ -40,43 +40,6 @@ class PackagesScreen extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget Packages_header() {
-    return Stack(
-      clipBehavior: Clip.none,
-      alignment: Alignment.center,
-      children: [
-        Container(
-          height: 120.h,
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: primaryColor,
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20.r),
-              bottomRight: Radius.circular(20.r),
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: -50,
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              boxShadow: [
-                BoxShadow(
-                    blurRadius: 10, color: secondaryColor, spreadRadius: 6),
-              ],
-            ),
-            child: CircleAvatar(
-              radius: 70,
-              backgroundColor: primaryColor,
-              foregroundImage: AssetImage(AppImages.applogo),
-            ),
-          ),
-        ),
-      ],
     );
   }
 
@@ -102,13 +65,13 @@ class PackagesScreen extends StatelessWidget {
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("₹${pkg.price}"),
                   Text(pkg.description),
                   ...pkg.servicesIncluded
                       .map((service) =>
                           Text("• $service", style: TextStyle(fontSize: 12)))
                       .toList(),
                   Text("Plan: ${pkg.subscriptionPlan}"),
+                  Text("₹${pkg.price}"),
                 ],
               ),
             ),

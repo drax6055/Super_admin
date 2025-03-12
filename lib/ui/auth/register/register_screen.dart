@@ -38,7 +38,7 @@ class RegisterScreen extends StatelessWidget {
       controller: getController.emailController,
       labelText: 'Email',
       keyboardType: TextInputType.emailAddress,
-      // validator: (value) => Validation.validateEmail(value),
+      validator: (value) => Validation.validateEmail(value),
     );
   }
 
@@ -47,7 +47,7 @@ class RegisterScreen extends StatelessWidget {
       controller: getController.phoneController,
       labelText: 'Phone',
       keyboardType: TextInputType.phone,
-      // validator: (value) => Validation.validatePhone(value),
+      validator: (value) => Validation.validatePhone(value),
     );
   }
 
@@ -57,7 +57,7 @@ class RegisterScreen extends StatelessWidget {
       labelText: 'Address',
       maxLines: 2,
       keyboardType: TextInputType.text,
-      //  validator: (value) => Validation.validateAddress(value),
+      validator: (value) => Validation.validateAddress(value),
     );
   }
 
@@ -66,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
       controller: getController.salonNameController,
       labelText: 'Salon Name',
       keyboardType: TextInputType.text,
-      //  validator: (value) => Validation.validatename(value),
+      validator: (value) => Validation.validatename(value),
     );
   }
 
@@ -75,7 +75,7 @@ class RegisterScreen extends StatelessWidget {
       controller: getController.ownerNameController,
       labelText: 'Owner Name',
       keyboardType: TextInputType.text,
-      //  validator: (value) => Validation.validatename(value),
+      validator: (value) => Validation.validatename(value),
     );
   }
 
@@ -83,9 +83,10 @@ class RegisterScreen extends StatelessWidget {
     return ElevatedButtonExample(
       text: "Next",
       onPressed: () {
-        Get.offAllNamed(Routes.packagesScreen);
+        Get.toNamed(Routes.packagesScreen);
+
         // if (_formKey.currentState?.validate() ?? false) {
-        //   Get.offAllNamed(Routes.packagesScreen);
+        //   Get.toNamed(Routes.packagesScreen);
         // } else {
         //   Get.snackbar(
         //     'Validation Error',
@@ -156,7 +157,6 @@ class RegisterScreen extends StatelessWidget {
                 CustomTextStyles.textFontSemiBold(size: 12.sp, color: grey),
           ),
           SizedBox(height: 20.h),
-
           InputTxtfield_OwnerName(),
           SizedBox(height: 16.h),
           InputTxtfield_Phone(),
@@ -170,7 +170,7 @@ class RegisterScreen extends StatelessWidget {
           Btn_register(),
           SizedBox(height: 30.h),
           InkWell(
-              onTap: () => Get.offNamed(Routes.loginScreen),
+              onTap: () => Get.back(),
               child: Align(
                   alignment: Alignment.center,
                   child: CustomTextWidget(
