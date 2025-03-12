@@ -20,28 +20,30 @@ class PackagesScreen extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 5.h),
+
+          // Toggle Button for Monthly / Yearly
           Obx(() => Container(
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.r),
                   color: lightgrey,
                 ),
                 child: ToggleButtons(
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(30.r),
                   selectedBorderColor: Colors.transparent,
                   fillColor: primaryColor,
                   color: black,
                   selectedColor: white,
-                  constraints: BoxConstraints(minHeight: 50, minWidth: 120),
+                  constraints: BoxConstraints(minHeight: 40.h, minWidth: 100.w),
                   isSelected: [
-                    getController.selectedIndex.value == 0,
-                    getController.selectedIndex.value == 1
+                    getController.selectedIndex.value == 0, // Monthly
+                    getController.selectedIndex.value == 1 // Yearly
                   ],
                   onPressed: (int index) {
                     getController.toggleGender(index);
                   },
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -49,7 +51,7 @@ class PackagesScreen extends StatelessWidget {
                               color: getController.selectedIndex.value == 0
                                   ? white
                                   : black),
-                          SizedBox(width: 8),
+                          SizedBox(width: 8.w),
                           CustomTextWidget(
                             text: "Monthly",
                             textStyle: CustomTextStyles.textFontBold(
@@ -87,16 +89,20 @@ class PackagesScreen extends StatelessWidget {
                   ],
                 ),
               )),
+
           SizedBox(height: 5.h),
+
+          // Packages List with Filter
           Expanded(
             child: Obx(() {
-              if (getController.packages.isEmpty) {
+              var filteredPackages = getController.filteredPackages;
+              if (filteredPackages.isEmpty) {
                 return Center(child: CircularProgressIndicator());
               }
               return ListView.builder(
-                itemCount: getController.packages.length,
+                itemCount: filteredPackages.length,
                 itemBuilder: (context, index) {
-                  return _buildRadioCard(getController.packages[index]);
+                  return _buildRadioCard(filteredPackages[index]);
                 },
               );
             }),
@@ -131,7 +137,7 @@ class PackagesScreen extends StatelessWidget {
                     top: 8,
                     child: CustomTextWidget(
                       text: "${pkg.subscriptionPlan}",
-                      textStyle: CustomTextStyles.textFontBold(size: 12),
+                      textStyle: CustomTextStyles.textFontBold(size: 12.sp),
                     ),
                   ),
                   ListTile(
@@ -145,8 +151,8 @@ class PackagesScreen extends StatelessWidget {
                         ...pkg.servicesIncluded
                             .map((service) => CustomTextWidget(
                                 text: "• $service",
-                                textStyle:
-                                    CustomTextStyles.textFontRegular(size: 12)))
+                                textStyle: CustomTextStyles.textFontRegular(
+                                    size: 12.sp)))
                             .toList(),
                         CustomTextWidget(
                           text: "₹${pkg.price}",
