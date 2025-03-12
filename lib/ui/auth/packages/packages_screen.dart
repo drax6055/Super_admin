@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:razorpay_flutter/razorpay_flutter.dart';
 import '../../../network/model/packages.dart';
 import '../../../utils/colors.dart';
 import '../../../utils/custom_text_styles.dart';
@@ -107,6 +108,16 @@ class PackagesScreen extends StatelessWidget {
               );
             }),
           ),
+
+          Obx(() => getController.selectedPackageId.value != null
+              ? Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: ElevatedButton(
+                    onPressed: () => getController.startPayment(),
+                    child: Text("Proceed to Payment"),
+                  ),
+                )
+              : SizedBox()),
         ],
       ),
     );
